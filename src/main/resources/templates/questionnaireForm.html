@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Questionnaire Form</title>
+</head>
+<body>
+<form th:action="@{/resultsOfQuestionnaire}" th:object="${questionnaire}" method="post">
+    <div class="form-row">
+        <strong>Age</strong>
+        <div class="col-md-6 form-group">
+            <input type="number" class="form-control" th:field="*{age}">
+        </div>
+    </div>
+    <div class="col-md-6 form-group">
+        <strong>Gender</strong>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" th:field="*{gender}" id="option1" value="Male">
+            <label class="form-check-label" for="option1">Male</label>
+            <input class="form-check-input" type="radio" th:field="*{gender}" id="option2" value="Female">
+            <label class="form-check-label" for="option2">Female</label>
+            <input class="form-check-input" type="radio" th:field="*{gender}" id="option3" value="Others">
+            <label class="form-check-label" for="option3">Others</label>
+        </div>
+    </div>
+
+    <div class="col-md-6 form-group">
+        <strong>Please let us know your current body temperature in degree Fahrenheit (Normal body temperature is 98.6°F):</strong>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" th:field="*{temperature}" id="temperature1" value="normal">
+            <label class="form-check-label" for="temperature1">Normal(96°F-98.6°F)</label>
+            <input class="form-check-input" type="radio" th:field="*{temperature}" id="temperature2" value="fever">
+            <label class="form-check-label" for="temperature2">Fever(98.6°F-102°F)</label>
+            <input class="form-check-input" type="radio" th:field="*{temperature}" id="temperature3" value="highFever">
+            <label class="form-check-label" for="temperature3">High Fever(>102°F)</label>
+            <input class="form-check-input" type="radio" th:field="*{temperature}" id="temperature4" value="unknown">
+            <label class="form-check-label" for="temperature4">Don't know</label>
+        </div>
+    </div>
+
+    <div class="col-md-6 form-group">
+        <strong>Are you experiencing any of the symptoms below (mark all those applicable)</strong>
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" th:field="*{symptoms}" id="symptoms1" value="cough">
+            <label class="form-check-label" for="symptoms1">
+                Dry Cough
+            </label>
+            <input class="form-check-input" type="checkbox" th:field="*{symptoms}" id="symptom2" value="smell">
+            <label class="form-check-label" for="symptom2">
+                Loss or Diminished Sense of Smell
+            </label>
+            <input class="form-check-input" type="checkbox" th:field="*{symptoms}" id="symptom3" value="throat">
+            <label class="form-check-label" for="symptom3">
+                Sore Throat
+            </label>
+            <input class="form-check-input" type="checkbox" th:field="*{symptoms}" id="symptom4" value="weakness">
+            <label class="form-check-label" for="symptom4">
+                Weakness
+            </label>
+            <input class="form-check-input" type="checkbox" th:field="*{symptoms}" id="symptom5" value="appetite">
+            <label class="form-check-label" for="symptom5">
+                Change In Appetite
+            </label>
+            <input class="form-check-input" type="checkbox" th:field="*{symptoms}" id="symptom6" value="none">
+            <label class="form-check-label" for="symptom6">
+                None of these
+            </label>
+        </div>
+    </div>
+    <div class="col-md-6 form-group">
+        <strong>Are you experiencing any of the symptoms below (mark all those applicable)</strong>
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" th:field="*{additionalSymptoms}" id="additionalSymptoms1" value="cough">
+            <label class="form-check-label" for="additionalSymptoms1">
+                Moderate to Severe Cough
+            </label>
+            <input class="form-check-input" type="checkbox" th:field="*{additionalSymptoms}" id="additionalSymptom2" value="breathless">
+            <label class="form-check-label" for="additionalSymptom2">
+                Feeling Breathless
+            </label>
+            <input class="form-check-input" type="checkbox" th:field="*{additionalSymptoms}" id="additionalSymptom3" value="difficultBreathing">
+            <label class="form-check-label" for="additionalSymptom3">
+                Difficulty In Breathing
+            </label>
+            <input class="form-check-input" type="checkbox" th:field="*{additionalSymptoms}" id="additionalSymptom4" value="drowsiness">
+            <label class="form-check-label" for="additionalSymptom4">
+                Drowsiness
+            </label>
+            <input class="form-check-input" type="checkbox" th:field="*{additionalSymptoms}" id="additionalSymptom5" value="chest">
+            <label class="form-check-label" for="additionalSymptom5">
+                Persistent pain and pressure in chest
+            </label>
+            <input class="form-check-input" type="checkbox" th:field="*{additionalSymptoms}" id="additionalSymptom6" value="weakness">
+            <label class="form-check-label" for="additionalSymptom6">
+                Severe weakness
+            </label>
+            <input class="form-check-input" type="checkbox" th:field="*{additionalSymptoms}" id="additionalSymptom7" value="none">
+            <label class="form-check-label" for="additionalSymptom7">
+                None of these
+            </label>
+        </div>
+    </div>
+    <div class="col-md-6 form-group">
+        <strong>Please select your travel and exposure detail</strong>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" th:field="*{travelHistory}" id="travelHistory1" value="None">
+            <label class="form-check-label" for="travelHistory1">No Travel History</label>
+            <input class="form-check-input" type="radio" th:field="*{travelHistory}" id="travelHistory2" value="NoContact">
+            <label class="form-check-label" for="travelHistory2">No Contact with anyone with Symptoms</label>
+            <input class="form-check-input" type="radio" th:field="*{travelHistory}" id="travelHistory3" value="affectedArea">
+            <label class="form-check-label" for="travelHistory3">History of travel or meeting in affected geographical area in last 14 days</label>
+            <input class="form-check-input" type="radio" th:field="*{travelHistory}" id="travelHistory4" value="closeContact">
+            <label class="form-check-label" for="travelHistory4">Close contact with confirmed COVID in last 14 days</label>
+        </div>
+    </div>
+    <div class="col-md-6 form-group">
+        <strong>Existing Disease</strong>
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" th:field="*{existingDisease}" id="disease1" value="diabetes">
+            <label class="form-check-label" for="disease1">
+                Diabetes
+            </label>
+            <input class="form-check-input" type="checkbox" th:field="*{existingDisease}" id="disease2" value="hbp">
+            <label class="form-check-label" for="disease2">
+                High Blood Pressure
+            </label>
+            <input class="form-check-input" type="checkbox" th:field="*{existingDisease}" id="disease3" value="heartDisease">
+            <label class="form-check-label" for="disease3">
+                Heart Disease
+            </label>
+            <input class="form-check-input" type="checkbox" th:field="*{existingDisease}" id="disease4" value="kidneyDisease">
+            <label class="form-check-label" for="disease4">
+                Kidney Disease
+            </label>
+            <input class="form-check-input" type="checkbox" th:field="*{existingDisease}" id="disease5" value="lungDisease">
+            <label class="form-check-label" for="disease5">
+                Lung Disease
+            </label>
+            <input class="form-check-input" type="checkbox" th:field="*{existingDisease}" id="disease6" value="stroke">
+            <label class="form-check-label" for="disease6">
+                Stroke
+            </label>
+            <input class="form-check-input" type="checkbox" th:field="*{existingDisease}" id="disease7" value="reducedImmunity">
+            <label class="form-check-label" for="disease7">
+                Reduced Immunity
+            </label>
+            <input class="form-check-input" type="checkbox" th:field="*{existingDisease}" id="disease8" value="none">
+            <label class="form-check-label" for="disease8">
+                None of these
+            </label>
+        </div>
+    </div>
+    <tr>
+        <td><input type="submit" value="Submit" /></td>
+    </tr>
+</form>
+</body>
+</html>
