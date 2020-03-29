@@ -9,9 +9,11 @@ How to run : Go to AddConfiguration in right-middle. One window is opened => Cli
 Now run the project, it's going to run on port 8080 (In case there is a need to change the port number, open src/main/resources/application.properties file. write "server.port=8081" 
 
 What are the endpoints provided : Go to QuestionnaireController
+
 go to http://localhost:8080/questionnaireForm to get the form.
 
 Once the form is submitted, new page is opened.
 
 The main code is in src/main/java
+html files are in src/main/resources/templates
 
