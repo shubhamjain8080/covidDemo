@@ -13,3 +13,5 @@ go to http://localhost:8080/questionnaireForm to get the form.
 
 Once the form is submitted, new page is opened.
 
+The main code is in src/main/java
+
