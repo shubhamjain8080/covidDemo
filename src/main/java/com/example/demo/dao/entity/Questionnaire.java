@@ -1,15 +1,23 @@
-package com.example.demo.model;
+package com.example.demo.dao.entity;
+
+import org.neo4j.ogm.annotation.GeneratedValue;
+import org.neo4j.ogm.annotation.Id;
+import org.neo4j.ogm.annotation.NodeEntity;
 
 import java.util.List;
 
+@NodeEntity
 public class Questionnaire {
-    public Integer age;
-    public String gender;
-    public String temperature;
-    public List<String> symptoms;
-    public List<String> additionalSymptoms;
-    public String travelHistory;
-    public List<String> existingDisease;
+    @Id @GeneratedValue
+    private Long id;
+    private String idFromFrontEnd;
+    private Integer age;
+    private String gender;
+    private String temperature;
+    private List<String> symptoms;
+    private List<String> additionalSymptoms;
+    private String travelHistory;
+    private List<String> existingDisease;
 
     public Integer getAge() {
         return age;
@@ -67,16 +75,20 @@ public class Questionnaire {
         this.travelHistory = travelHistory;
     }
 
-    @Override
-    public String toString() {
-        return "Questionnaire{" +
-                "age=" + age +
-                ", gender='" + gender + '\'' +
-                ", temperature='" + temperature + '\'' +
-                ", symptoms=" + symptoms +
-                ", additionalSymptoms=" + additionalSymptoms +
-                ", travelHistory='" + travelHistory + '\'' +
-                ", existingDisease=" + existingDisease +
-                '}';
+    public Long getId() {
+        return id;
     }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getIdFromFrontEnd() {
+        return idFromFrontEnd;
+    }
+
+    public void setIdFromFrontEnd(String idFromFrontEnd) {
+        this.idFromFrontEnd = idFromFrontEnd;
+    }
+
 }
