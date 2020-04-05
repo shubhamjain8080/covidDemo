@@ -1,0 +1,21 @@
+type Questionnaire{
+    id: ID!,
+    name: String,
+    age: Int,
+    gender: String,
+    temperature: String,
+    symptoms: [String],
+    additionalSymptoms: [String],
+    travelHistory: String,
+    existingDisease: [String]
+}
+
+type Mutation{
+    submitQuestionnaire(name:String,age:Int,gender:String,temperature:String,symptoms:[String],additionalSymptoms:[String],travelHistory:String,existingDisease:[String]):Questionnaire
+}
+
+type Query{
+    getQuestionnaires:[Questionnaire],
+    getQuestionnairesForASymptom(symptom:String):[Questionnaire]
+
+}

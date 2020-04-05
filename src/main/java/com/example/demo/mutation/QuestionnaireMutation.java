@@ -18,18 +18,13 @@ public class QuestionnaireMutation implements GraphQLMutationResolver {
     QuestionnaireService questionnaireService;
 
     public Questionnaire submitQuestionnaire(
-            String name, Integer age, String gender, String temprature, List<String> symptoms,
-            List<String> additionalSymptoms, String travelHistory, List<String> existingDisease
+            final String name, final Integer age, final String gender, final String temperature, final List<String> symptoms,
+            final List<String> additionalSymptoms, final String travelHistory, final List<String> existingDisease
             )
     {
         return questionnaireService.createNewQuestionnaire(
-                name,age, gender, temprature, symptoms,
+                name,age, gender, temperature, symptoms,
                 additionalSymptoms, travelHistory, existingDisease
         );
     }
-
-    public List<Questionnaire> findQuestionnairesForASymptom(String symptom){
-        return questionnaireService.findQuestionnairesForASymptom(symptom);
-    }
-
 }

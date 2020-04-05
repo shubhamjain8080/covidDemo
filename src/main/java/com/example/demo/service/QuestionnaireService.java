@@ -2,7 +2,6 @@ package com.example.demo.service;
 
 import com.example.demo.dao.entity.Questionnaire;
 import com.example.demo.dao.repository.QuestionnaireRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -12,12 +11,13 @@ import java.util.List;
 @Service
 public class QuestionnaireService {
 
-    QuestionnaireRepository questionnaireRepository;
+    private final QuestionnaireRepository questionnaireRepository;
 
     public QuestionnaireService(QuestionnaireRepository questionnaireRepository) {
         this.questionnaireRepository = questionnaireRepository;
     }
 
+    @Transactional
     public Questionnaire createNewQuestionnaire(
             String name, Integer age, String gender, String temperature, List<String> symptoms,
             List<String> additionalSymptoms, String travelHistory, List<String> existingDisease
@@ -35,7 +35,15 @@ public class QuestionnaireService {
         return questionnaireRepository.save(questionnaire);
     }
 
+    @Transactional
     public List<Questionnaire> findQuestionnairesForASymptom(String symptom){
-        return new ArrayList<>();
+        return questionnaireRepository.findAllMembersWithSymptom(symptom);
     }
+
+    @Transactional(readOnly = true)
+    public List<Questionnaire> getAllQuestionnaires() {
+        return (List<Questionnaire>) questionnaireRepository.findAll();
+    }
+
+
 }

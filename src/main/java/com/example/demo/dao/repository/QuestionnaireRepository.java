@@ -9,7 +9,7 @@ import java.util.List;
 
 @Repository
 public interface QuestionnaireRepository extends Neo4jRepository<Questionnaire, Long> {
-//
-////    @Query("Match(q:Questionnaire)-[b:HAS_SYMPTOM]-(s:Symptom) where q.symptoms = $sym RETURN q")
-//    List<Questionnaire> findAllMembersWithSymptom(String sym);
+
+    @Query("Match(q:Questionnaire) where $sym in q.symptoms  RETURN q")
+    List<Questionnaire> findAllMembersWithSymptom(String sym);
 }

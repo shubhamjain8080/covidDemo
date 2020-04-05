@@ -13,6 +13,8 @@ import java.util.List;
 @EqualsAndHashCode
 @Data
 public class Questionnaire {
+    private static final long serialVersionUID = 1L;
+
     @Id @GeneratedValue
     private Long id;
     private String name;
@@ -25,6 +27,10 @@ public class Questionnaire {
     private List<String> additionalSymptoms;
     private String travelHistory;
     private List<String> existingDisease;
+
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
 
     public Integer getAge() {
         return age;
@@ -98,4 +104,18 @@ public class Questionnaire {
         this.id = id;
     }
 
+    @Override
+    public String toString() {
+        return "Questionnaire{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", age=" + age +
+                ", gender='" + gender + '\'' +
+                ", temperature='" + temperature + '\'' +
+                ", symptoms=" + symptoms +
+                ", additionalSymptoms=" + additionalSymptoms +
+                ", travelHistory='" + travelHistory + '\'' +
+                ", existingDisease=" + existingDisease +
+                '}';
+    }
 }
