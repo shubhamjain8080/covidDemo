@@ -1,19 +1,26 @@
 package com.example.demo.dao.entity;
 
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 import org.neo4j.ogm.annotation.GeneratedValue;
 import org.neo4j.ogm.annotation.Id;
 import org.neo4j.ogm.annotation.NodeEntity;
+import org.neo4j.ogm.annotation.Relationship;
 
 import java.util.List;
 
 @NodeEntity
+@EqualsAndHashCode
+@Data
 public class Questionnaire {
     @Id @GeneratedValue
     private Long id;
-    private String idFromFrontEnd;
+    private String name;
     private Integer age;
     private String gender;
     private String temperature;
+
+    @Relationship(type = "HAS_SYMPTOM", direction = Relationship.OUTGOING)
     private List<String> symptoms;
     private List<String> additionalSymptoms;
     private String travelHistory;
@@ -21,6 +28,14 @@ public class Questionnaire {
 
     public Integer getAge() {
         return age;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public void setAge(Integer age) {
@@ -81,14 +96,6 @@ public class Questionnaire {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getIdFromFrontEnd() {
-        return idFromFrontEnd;
-    }
-
-    public void setIdFromFrontEnd(String idFromFrontEnd) {
-        this.idFromFrontEnd = idFromFrontEnd;
     }
 
 }

@@ -1,0 +1,19 @@
+type Questionnaire{
+    id: Long!,
+    name: String,
+    age: Int,
+    gender: String,
+    temprature: String,
+    symptoms: [String],
+    additionalSymptoms: [String],
+    travelHistory: String,
+    existingDisease: [String]
+}
+
+type Mutation{
+    submitQuestionnaire(age:Int!,gender:String,temperature:String,symptoms:[String],additionalSymptoms:[String],travelHistory:String,existingDisease:[String]):Questionnaire
+}
+
+type Query{
+    findQuestionnairesForASymptom(symptom:String):Questionnaire
+}
