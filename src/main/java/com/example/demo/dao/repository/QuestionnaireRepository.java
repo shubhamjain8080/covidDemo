@@ -12,4 +12,7 @@ public interface QuestionnaireRepository extends Neo4jRepository<Questionnaire, 
 
     @Query("Match(q:Questionnaire) where $sym in q.symptoms  RETURN q")
     List<Questionnaire> findAllMembersWithSymptom(String sym);
+
+    @Query("Match(q:Questionnaire) where $linkingId = q.linkingId  RETURN q")
+    Questionnaire findQuestionnaireFromLinkingId(String linkingId);
 }

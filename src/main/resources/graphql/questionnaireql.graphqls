@@ -7,13 +7,13 @@ type Questionnaire{
     symptoms: [String],
     additionalSymptoms: [String],
     travelHistory: String,
-    existingDisease: [String]
+    existingDisease: [String],
+    linkingId:String
 }
 
 type Mutation{
-    submitQuestionnaire(name:String,age:Int,gender:String,temperature:String,symptoms:[String],additionalSymptoms:[String],travelHistory:String,existingDisease:[String]):Questionnaire,
-    addPerson(name:String,age:Int):Person
-    linkPersonToQuestionnaireById(personId:ID,questionnaireId:ID):Person
+    submitQuestionnaire(name:String,age:Int,gender:String,temperature:String,symptoms:[String],additionalSymptoms:[String],travelHistory:String,existingDisease:[String],linkingId:String):Questionnaire,
+    addPerson(name:String,age:Int,linkingId:String):Person
 }
 
 type Query{

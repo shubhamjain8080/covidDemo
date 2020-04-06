@@ -20,8 +20,8 @@ public class QuestionnaireService {
     @Transactional
     public Questionnaire createNewQuestionnaire(
             String name, Integer age, String gender, String temperature, List<String> symptoms,
-            List<String> additionalSymptoms, String travelHistory, List<String> existingDisease
-    )
+            List<String> additionalSymptoms, String travelHistory, List<String> existingDisease,
+            String linkingId)
     {
         Questionnaire questionnaire = new Questionnaire();
         questionnaire.setName(name);
@@ -32,6 +32,7 @@ public class QuestionnaireService {
         questionnaire.setAdditionalSymptoms(additionalSymptoms);
         questionnaire.setTravelHistory(travelHistory);
         questionnaire.setExistingDisease(existingDisease);
+        questionnaire.setLinkingId(linkingId);
         return questionnaireRepository.save(questionnaire);
     }
 
@@ -45,7 +46,7 @@ public class QuestionnaireService {
         return (List<Questionnaire>) questionnaireRepository.findAll();
     }
 
-    public Questionnaire getQuestionnaireById(Long questionnaireId) {
-        return questionnaireRepository.findById(questionnaireId).get();
+    public Questionnaire getQuestionnaireById(String questionnaireId) {
+        return questionnaireRepository.findQuestionnaireFromLinkingId(questionnaireId);
     }
 }

@@ -1,6 +1,7 @@
 type Person{
     id:ID!,
     name:String,
-    age:Int
+    age:Int,
+    linkingId:String
 }
 

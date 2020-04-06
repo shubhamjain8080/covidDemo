@@ -17,19 +17,19 @@ public class PersonService {
         this.personRepository = personRepository;
     }
 
-    public Person addPerson(String name, Integer age){
+    public Person addPerson(String name, Integer age, String linkingId, Questionnaire questionnaire){
         Person person = new Person();
         person.setName(name);
         person.setAge(age);
+        person.setLinkingId(linkingId);
+        person.setQuestionnaire(questionnaire);
         return personRepository.save(person);
     }
 
-    public Person linkPersonToQuestionnaireById(Long personId, Questionnaire questionnaire) {
-        Optional<Person> person = personRepository.findById(personId);
-        System.out.println(person.get());
+    public Person linkPersonToQuestionnaireById(String linkingId, Questionnaire questionnaire) {
+        Optional<Person> person = personRepository.getPeopleWithLinkingId(linkingId);
         person.ifPresent(person1 -> person1.setQuestionnaire(questionnaire));
         person.ifPresent(person1 -> personRepository.save(person1));
-        System.out.println(person.get());
         return person.get();
     }
 
