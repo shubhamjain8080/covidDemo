@@ -45,5 +45,7 @@ public class QuestionnaireService {
         return (List<Questionnaire>) questionnaireRepository.findAll();
     }
 
-
+    public Questionnaire getQuestionnaireById(Long questionnaireId) {
+        return questionnaireRepository.findById(questionnaireId).get();
+    }
 }

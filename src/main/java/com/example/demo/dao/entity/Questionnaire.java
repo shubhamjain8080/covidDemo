@@ -27,6 +27,7 @@ public class Questionnaire {
     private List<String> additionalSymptoms;
     private String travelHistory;
     private List<String> existingDisease;
+    private String linkingId;
 
     public static long getSerialVersionUID() {
         return serialVersionUID;
@@ -102,6 +103,14 @@ public class Questionnaire {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getLinkingId() {
+        return linkingId;
+    }
+
+    public void setLinkingId(String linkingId) {
+        this.linkingId = linkingId;
     }
 
     @Override

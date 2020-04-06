@@ -11,11 +11,13 @@ type Questionnaire{
 }
 
 type Mutation{
-    submitQuestionnaire(name:String,age:Int,gender:String,temperature:String,symptoms:[String],additionalSymptoms:[String],travelHistory:String,existingDisease:[String]):Questionnaire
+    submitQuestionnaire(name:String,age:Int,gender:String,temperature:String,symptoms:[String],additionalSymptoms:[String],travelHistory:String,existingDisease:[String]):Questionnaire,
+    addPerson(name:String,age:Int):Person
+    linkPersonToQuestionnaireById(personId:ID,questionnaireId:ID):Person
 }
 
 type Query{
-    getQuestionnaires:[Questionnaire],
-    getQuestionnairesForASymptom(symptom:String):[Questionnaire]
-
+getQuestionnaires:[Questionnaire],
+getQuestionnairesForASymptom(symptom:String):[Questionnaire]
+    getPeopleWithASymptom(symptom:String):[Person]
 }

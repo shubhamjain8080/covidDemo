@@ -1,8 +1,10 @@
 package com.example.demo.mutation;
 
 import com.coxautodev.graphql.tools.GraphQLMutationResolver;
+import com.example.demo.dao.entity.Person;
 import com.example.demo.dao.entity.Questionnaire;
 import com.example.demo.dao.repository.QuestionnaireRepository;
+import com.example.demo.service.PersonService;
 import com.example.demo.service.QuestionnaireService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -17,6 +19,9 @@ public class QuestionnaireMutation implements GraphQLMutationResolver {
     @Autowired
     QuestionnaireService questionnaireService;
 
+    @Autowired
+    PersonService personService;
+
     public Questionnaire submitQuestionnaire(
             final String name, final Integer age, final String gender, final String temperature, final List<String> symptoms,
             final List<String> additionalSymptoms, final String travelHistory, final List<String> existingDisease
@@ -26,5 +31,14 @@ public class QuestionnaireMutation implements GraphQLMutationResolver {
                 name,age, gender, temperature, symptoms,
                 additionalSymptoms, travelHistory, existingDisease
         );
+    }
+
+    public Person addPerson(final String name, final Integer age){
+        return personService.addPerson(name,age);
+    }
+
+    public Person linkPersonToQuestionnaireById(final Long personId, final Long questionnaireId){
+        Questionnaire questionnaire = questionnaireService.getQuestionnaireById(questionnaireId);
+        return personService.linkPersonToQuestionnaireById(personId, questionnaire);
     }
 }
